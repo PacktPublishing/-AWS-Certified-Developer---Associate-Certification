@@ -1,32 +1,36 @@
-# Learning IPython for Interactive Computing and Data Visualization [Video]
-This is the code repository for [Power BI for Business Professionals [Video]](https://www.packtpub.com/data/power-bi-for-business-professionals-video), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
+# AWS Certified Developer - Associate Certification [Video]
+This is the code repository for [AWS Certified Developer - Associate Certification](https://www.packtpub.com/virtualization-and-cloud/aws-certified-developer-associate-certification-video), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
 ## About the Video Course
-Make the most of Power BI and get the best possible outcomes from your business data by preparing effective data visualizations. Via thorough business analyses, make your processes efficient and result-oriented.	
+With this course, you will cover all the essential AWS services you need to pass the exam. This course prepares you thoroughly for certification with in-depth coverage of every topic. With practical hands-on labs, you master each domain to help you pass the AWS Developer Associate exam with flying colors.
 
 <H2>What You Will Learn</H2>
 <DIV class=book-info-will-learn-text>
 <UL>
-<LI>Importance of installing Power BI updates regularly to keep up with the rapid pace of change
-<LI>Import data from databases, spreadsheets, and other data sources like a professional data scientist
-<LI>Serve the needs of users, analysts, and colleagues with well-designed reports, dashboards, and mobile applications
-<LI>Deploy and publish with Power BI Service
-<LI>Steal a march on your competitors by customizing Power BI to provide unique data visualizations and unique insights
-<LI>Gain insights quickly by the effective use of custom data visualizations </LI></UL></DIV>
+<LI>In-depth tutorials will help you confidently pass the AWS Certified Developer – Associate Exam
+<LI>Write applications using AWS Service APIs, the AWS CLI, and SDKs
+<LI>Identify key features of AWS Services to understand the AWS shared responsibility model
+<LI>Get an in-depth understanding of application lifecycle management
+<LI>Use a CI/CD pipeline to deploy applications on AWS
+<LI>Write code by applying a basic understanding of cloud-native applications
+<LI>Author, maintain, and debug code modules on AWS and write code using AWS security best practices
+<LI>Gain proficiency in writing code for serverless applications
+<LI>Understand the use of containers in the development processs </LI></UL></DIV>
 
 ## Instructions and Navigation
 ### Assumed Knowledge
 To fully benefit from the coverage included in this course, you will need:<br/>
-Familiarity with Power BI would be an advantage
+Experience in DevOps and AWS is necessary
 ### Technical Requirements
 This course has the following software requirements:<br/>
-<UL><LI>Power BI Desktop is only available on Windows
-<LI>Virtually all modern graphical browsers such as Firefox and Chrome are suitable for use with the Power BI Service
-  <LI>R (Microsoft R Client and RStudio recommended)</LI></UL>
+<UL><LI>Operating system: None
+<LI>Browser: Chrome, Firefox or IE
+<LI>SSH Client: Putty and Puttygen for Windows
+<LI>RDP Client – RDP Client for Mac</LI></UL>
 
 ## Related Products
-* [Power BI Masterclass - Beginners to Advanced [Video]](https://www.packtpub.com/big-data-and-business-intelligence/power-bi-masterclass-beginners-advanced-video)
+* [AWS Essentials and Solutions Architect Associate: The Total Course [Video]](https://www.packtpub.com/cloud-networking/aws-essentials-and-solutions-architect-associate-the-total-course-video)
 
-* [Power BI Masterclass - Your Future in Data Analytics [Video]](https://www.packtpub.com/big-data-and-business-intelligence/power-bi-masterclass-your-future-data-analytics-video)
+* [AWS Certified Developer Associate - A Practical Guide [Video]](https://www.packtpub.com/application-development/aws-certified-developer-associate-practical-guide-video)
 
-* [Microsoft Power BI Online [Video]](https://www.packtpub.com/big-data-and-business-intelligence/microsoft-power-bi-online-video)
+* [AWS Certified Solution Architect Professional - Revision Guide [Video]](packtpub.com/virtualization-and-cloud/aws-certified-solution-architect-professional-revision-guide-video)
 
