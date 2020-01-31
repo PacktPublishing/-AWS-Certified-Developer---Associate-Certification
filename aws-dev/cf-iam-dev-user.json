@@ -1,0 +1,68 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Resources": {
+		"developer1": {
+			"Type": "AWS::IAM::User",
+			"Properties": {
+				"Groups": [{
+					"Ref": "groupName"
+				}],
+				"UserName": {
+					"Ref": "userName"
+				},
+				"LoginProfile": {
+					"Password": {
+						"Ref": "password"
+					},
+					"PasswordResetRequired": "true"
+				}
+			}
+		},
+		"developer1Keys": {
+			"DependsOn" : "developer1",
+			"Type": "AWS::IAM::AccessKey",
+			"Properties": {
+				"UserName": {
+					"Ref": "userName"
+				}
+			}
+		}
+	},
+	"Parameters": {
+		"accountNumber": {
+			"Type": "String",
+			"Default": "763988453897",
+			"AllowedValues": ["763988453897", "507038840153"],
+			"Description": "Enter the required Account to use. Default is 763988453897"
+		},
+		"password": {
+			"Type": "String",
+			"Default": "<~@hE{F[ZSLrB8JV",
+			"Description": "Enter the required password. Nop Default"
+
+		},
+		"groupName": {
+			"Type": "String",
+			"AllowedValues": ["Developers", "Operations", "Users"],
+			"Description": "Enter the required Group to use. Default is Developers"
+		},
+		"userName": {
+			"Type": "String",
+			"Description": "Enter the required username. No Default"
+		}
+	},
+	"Outputs": {
+		"secretKey": {
+			"Description": "Secret Access key generated for user",
+			"Value": {
+				"Fn::GetAtt": ["developer1Keys","SecretAccessKey"]
+			}
+		}, 
+		"accessKey": {
+			"Description": "Accesss key generated for user",
+			"Value": {
+				"Ref": "developer1Keys"
+			}
+		}
+	}
+}

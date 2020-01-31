@@ -1,0 +1,19 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "developerGroup": {
+            "Type": "AWS::IAM::Group",
+            "Properties": {
+                "GroupName":{"Ref": "groupName"}
+            }
+        }
+    },
+    "Parameters": {
+        "groupName": {
+            "Type": "String",
+            "Default": "Developers",
+            "AllowedValues": ["Developers","Operations","Users"],
+            "Description": "Enter the required Group to use. Default is Developers"
+        }
+    }
+}

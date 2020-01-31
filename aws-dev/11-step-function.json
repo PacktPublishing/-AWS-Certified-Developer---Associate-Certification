@@ -1,0 +1,30 @@
+{
+	"Comment": "An example step function calling two lambda functions in sequence",
+	"StartAt": "add user",
+	"TimeoutSeconds": 3600,
+	"States": {
+		"add user": {
+			"Type": "Task",
+			"Resource": "arn:aws:states:::lambda:invoke",
+			"Parameters": {
+				"FunctionName": "arn:aws:lambda:eu-west-2:763988453897:function:users:$LATEST",
+				"Payload": {
+					"Input.$": "$"
+				}
+			},
+			"Next": "add AD"
+
+		},
+		"add AD": {
+			"Type": "Task",
+			"Resource": "arn:aws:states:::lambda:invoke",
+			"Parameters": {
+				"FunctionName": "arn:aws:lambda:eu-west-2:763988453897:function:activeDirectory:$LATEST",
+				"Payload": {
+					"Input.$": "$"
+				}
+			},
+			"End": true
+		}
+	}
+}

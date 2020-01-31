@@ -1,0 +1,10 @@
+# Create the ECR repository
+# Note the URI and ARN of the ECR Repository
+aws ecr create-repository --repository-name base-python-3 --profile aws-dev
+
+# Build the Docker image
+docker build -t <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/base-python-3:latest .
+
+# Push the Docker image to ECR
+aws ecr get-login --no-include-email | bash
+docker push <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/base-python-3:latest

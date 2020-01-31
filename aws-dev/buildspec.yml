@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - ls -al
+      - echo installing python libraries
+      - pip install -r requirements.txt -t lib
+      - echo upgrading aws-cli
+      - pip install --upgrade awscli
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Testing  the Python code...
+      - python -V
+      - export PYTHONPATH=$PYTHONPATH:./lib
+      - export HOME_DIR=`pwd`
+      - python CFexampletests.py 
+  post_build:
+    commands:
+      - if [ $CODEBUILD_BUILD_SUCCEEDING = 1 ]; then echo Build completed on `date`;   else echo Build failed ignoring deployment; exit 1; fi 
+artifacts:
+  files:
+    - requirements.txt
+    - cf*.json
+    - CFexample.py  
+    - deployment-scripts/*.sh
+    - appspec.yml
+  name: management-tools.zip

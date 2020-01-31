@@ -1,0 +1,71 @@
+{
+ 	"AWSTemplateFormatVersion": "2010-09-09",
+ 	"Description": "widgets.com pipeline preliminares",
+ 	"Parameters": {
+ 		"Region": {
+ 			"Description": "The AWS region being used",
+ 			"Type": "String",
+ 			"Default": "eu-west-2"
+ 		},
+ 		"EnvironmentName": {
+ 			"Description": "An environment name that will be prefixed to resource names",
+ 			"Type": "String",
+ 			"Default": "test"
+ 		},
+ 		"BuildBucket": {
+ 			"Description": "the name of the codebuild ouput bucket",
+ 			"Type": "String",
+ 			"Default": "codebuild-763988453897-output"
+ 		},
+ 		"BuildRepo": {
+ 			"Description": "the name of the codebuild source repo",
+ 			"Type": "String",
+ 			"Default": "codebuild-763988453897-source"
+ 		}
+ 	},
+ 	"Resources": {
+ 		"BuildSource": {
+ 			"Type": "AWS::CodeCommit::Repository",
+ 			"Properties": {
+ 				"RepositoryDescription": "CodeBuild Source Repository",
+ 				"RepositoryName": {
+ 					"Ref": "BuildRepo"
+ 				}
+ 			}
+ 		},
+ 		"BuildOutputBucket": {
+ 			"Type": "AWS::S3::Bucket",
+ 			"Properties": {
+ 				"BucketName": {
+ 					"Ref": "BuildBucket"
+ 				},
+ 				"Tags": [{
+ 					"Key": "Name",
+ 					"Value": {
+ 						"Fn::Sub": ["${environment}-OutputBuild", {
+ 							"environment": {
+ 								"Ref": "EnvironmentName"
+ 							}
+ 						}]
+ 					}
+ 				}]
+
+ 			}
+ 		}
+ 	},
+ 	"Outputs": {
+ 		"S3": {
+ 			"Description": "Build output bucket",
+ 			"Value": {
+ 				"Ref": "BuildOutputBucket"
+ 			}
+ 		},
+ 		"CodeCommitURL": {
+ 			"Description": "Build source repository",
+ 			"Value": {
+ 				"Fn::GetAtt": ["BuildSource","CloneUrlHttp"]
+ 			}
+ 		}
+
+ 	}
+ }

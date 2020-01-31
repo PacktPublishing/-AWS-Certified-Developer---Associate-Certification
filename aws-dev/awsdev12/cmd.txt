@@ -1,0 +1,2 @@
+aws cloudformation create-stack --stack-name test-user2 --template-body file://iam-with-ssm.json --profile aws-dev --parameters file://iam-wit
+h-ssm-param.json --profile aws-dev --capabilities CAPABILITY_NAMED_IAM

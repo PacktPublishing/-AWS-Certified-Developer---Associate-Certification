@@ -1,0 +1,77 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Resources": {
+		"StandardDevelopmentPolicy": {
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "Bespoke_Standard_Developers",
+				"Groups": [{
+					"Ref": "groupName"
+				}],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [{
+							"Effect": "Allow",
+							"Action": [
+								"iam:*LoginProfile",
+								"iam:*AccessKey*",
+								"iam:*SSHPublicKey*"
+							],
+							"Resource": {"Fn::Join": ["",["arn:aws:iam::",{"Ref":"accountNumber"},":user/${aws:username}"]]}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"iam:ListAccount*",
+								"iam:GetAccountSummary",
+								"iam:GetAccountPasswordPolicy",
+								"iam:ListUsers"
+							],
+							"Resource": "*"
+						},
+						{
+							"Effect": "Allow",
+            				"Action": [
+                				"iam:CreateVirtualMFADevice",
+                				"iam:DeleteVirtualMFADevice",
+                				"iam:EnableMFADevice",
+                				"iam:ListMFADevices",
+                				"iam:ResyncMFADevice"
+            				],
+            				"Resource": [
+                				"arn:aws:iam::*:mfa/${aws:username}",
+                				"arn:aws:iam::*:user/${aws:username}"
+            				]
+        				},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"sts:AssumeRole"
+							],
+							"Resource": {"Fn::Join": ["", ["arn:aws:iam::", {"Ref": "accountNumber"}, ":role/", {"Ref": "assumeSTSRole"}]]}
+						}
+					]
+				}
+			}
+		}
+	},
+	"Parameters": {
+		"accountNumber": {
+			"Type": "String",
+			"Default": "763988453897",
+			"AllowedValues": ["763988453897", "507038840153"],
+			"Description": "Enter the required Account to use. Default is 763988453897"
+		},
+		"assumeSTSRole": {
+			"Type": "String",
+			"Default": "Assume-Local-S3-FA",
+			"Description": "Enter the required STS role allowed to assume. No Default"
+		},
+		"groupName": {
+			"Type": "String",
+			"Default": "Developers",
+			"AllowedValues": ["Developers", "Operations", "Users"],
+			"Description": "Enter the required Group to use. Default is Developers"
+		}
+	}
+}

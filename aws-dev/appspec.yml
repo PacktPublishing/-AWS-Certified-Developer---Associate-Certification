@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/management-tools
+hooks:
+  BeforeInstall:
+    - location: deployment-scripts/archive.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: deployment-scripts/update_release.sh
+      timeout: 300
+      runas: root
